@@ -1,0 +1,194 @@
+[
+  {
+      "product_id": 1,
+      "product_title": "Ultra Gaming Laptop",
+      "product_image": "url/to/gaming_laptop_image.jpg",
+      "category": "Computers",
+      "price": 1500,
+      "description": "High-performance laptop designed for gaming and multimedia tasks.",
+      "Specification": [
+          "16GB RAM",
+          "1TB SSD",
+          "RTX 3060 GPU",
+          "17-inch Full HD Display"
+      ],
+      "availability": true,
+      "rating": 4.8
+  },
+  {
+      "product_id": 2,
+      "product_title": "SuperPhone X",
+      "product_image": "url/to/superphone_x_image.jpg",
+      "category": "Phones",
+      "price": 999,
+      "description": "Latest flagship smartphone with advanced AI features and 5G.",
+      "Specification": [
+          "6.7-inch OLED Display",
+          "128GB Storage",
+          "48MP Triple Camera",
+          "5000mAh Battery"
+      ],
+      "availability": true,
+      "rating": 4.6
+  },
+  {
+      "product_id": 3,
+      "product_title": "Business Laptop Pro",
+      "product_image": "url/to/business_laptop_pro_image.jpg",
+      "category": "Computers",
+      "price": 1200,
+      "description": "Sleek and powerful laptop suitable for business and personal use.",
+      "Specification": [
+          "8GB RAM",
+          "512GB SSD",
+          "Intel Core i7",
+          "15.6-inch Display"
+      ],
+      "availability": false,
+      "rating": 4.4
+  },
+  {
+      "product_id": 4,
+      "product_title": "SmartWatch Fit 2",
+      "product_image": "url/to/smartwatch_fit_2_image.jpg",
+      "category": "Smart Watches",
+      "price": 199,
+      "description": "Stylish smartwatch with health tracking and workout modes.",
+      "Specification": [
+          "Heart Rate Monitor",
+          "GPS Tracking",
+          "Water Resistant",
+          "1.4-inch AMOLED Display"
+      ],
+      "availability": true,
+      "rating": 4.3
+  },
+  {
+      "product_id": 5,
+      "product_title": "Compact Power Bank 10000mAh",
+      "product_image": "url/to/power_bank_image.jpg",
+      "category": "Power Banks",
+      "price": 35,
+      "description": "Portable power bank with fast charging capabilities.",
+      "Specification": [
+          "10000mAh Capacity",
+          "Dual USB Output",
+          "Lightweight Design",
+          "Fast Charging Supported"
+      ],
+      "availability": true,
+      "rating": 4.7
+  },
+  {
+      "product_id": 6,
+      "product_title": "ProBook X360",
+      "product_image": "url/to/probook_x360_image.jpg",
+      "category": "Computers",
+      "price": 950,
+      "description": "Convertible laptop with touch display for versatile usage.",
+      "Specification": [
+          "8GB RAM",
+          "256GB SSD",
+          "Intel Core i5",
+          "14-inch Touch Display"
+      ],
+      "availability": true,
+      "rating": 4.5
+  },
+  {
+      "product_id": 7,
+      "product_title": "Eco-Friendly Smartphone",
+      "product_image": "url/to/eco_smartphone_image.jpg",
+      "category": "Phones",
+      "price": 399,
+      "description": "Sustainable smartphone made from eco-friendly materials.",
+      "Specification": [
+          "5.8-inch Display",
+          "64GB Storage",
+          "12MP Camera",
+          "3000mAh Battery"
+      ],
+      "availability": false,
+      "rating": 4.2
+  },
+  {
+      "product_id": 8,
+      "product_title": "Slim Desktop Computer",
+      "product_image": "url/to/desktop_image.jpg",
+      "category": "Computers",
+      "price": 800,
+      "description": "Compact desktop computer perfect for home and office use.",
+      "Specification": [
+          "8GB RAM",
+          "1TB HDD",
+          "Intel Core i5",
+          "Integrated Graphics"
+      ],
+      "availability": true,
+      "rating": 4.1
+  },
+  {
+      "product_id": 9,
+      "product_title": "Luxury SmartPhone Z",
+      "product_image": "url/to/luxury_smartphone_z_image.jpg",
+      "category": "Phones",
+      "price": 1500,
+      "description": "High-end smartphone with top-tier features and luxurious design.",
+      "Specification": [
+          "7-inch AMOLED Display",
+          "256GB Storage",
+          "108MP Camera",
+          "4500mAh Battery"
+      ],
+      "availability": true,
+      "rating": 4.9
+  },
+  {
+      "product_id": 10,
+      "product_title": "High-Capacity Power Bank",
+      "product_image": "url/to/high_capacity_power_bank_image.jpg",
+      "category": "Power Banks",
+      "price": 50,
+      "description": "High-capacity power bank ideal for long trips and heavy usage.",
+      "Specification": [
+          "20000mAh Capacity",
+          "Fast Charging",
+          "Triple USB Output",
+          "Compact Design"
+      ],
+      "availability": true,
+      "rating": 4.8
+  },
+  {
+      "product_id": 11,
+      "product_title": "Student-Friendly Laptop",
+      "product_image": "url/to/student_laptop_image.jpg",
+      "category": "Computers",
+      "price": 400,
+      "description": "Affordable and durable laptop designed for students.",
+      "Specification": [
+          "4GB RAM",
+          "128GB SSD",
+          "Intel Celeron",
+          "14-inch Display"
+      ],
+      "availability": false,
+      "rating": 3.9
+  },
+  {
+      "product_id": 12,
+      "product_title": "Workstation Pro Desktop",
+      "product_image": "url/to/workstation_image.jpg",
+      "category": "Computers",
+      "price": 2000,
+      "description": "Professional desktop for demanding tasks and heavy software.",
+      "Specification": [
+          "32GB RAM",
+          "2TB SSD",
+          "NVIDIA Quadro",
+          "27-inch 4K Display"
+      ],
+      "availability": true,
+      "rating": 4.9
+  }
+]
