@@ -12,7 +12,8 @@ export default {
         shade_white_color2: 'rgb(246, 246, 246)',
 
         black_color: 'rgb(11, 11, 11)',
-        Shade_black_color: 'rgba(11, 11, 11, 0.7)',
+        Shade_black_color_1: 'rgba(11, 11, 11, 0.7)',
+        Shade_black_color_2: 'rgba(11, 11, 11, 0.1)',
         black_bg_color: 'rgba(11, 11, 11, 0.15)',
 
         dark_blue_color: 'rgb(9, 8, 15)',
