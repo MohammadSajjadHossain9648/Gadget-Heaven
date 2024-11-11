@@ -1,29 +1,21 @@
-import React from 'react';
-import Footer from '../Footer/Footer';
-import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
-import Header from '../Header/Header';
+import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
+import Banner from '../Banner/Banner';
+import Gadgets from '../Gadgets/Gadgets';
 
-const Home = () => {
-    const location = useLocation();
-    const isHomePage = (location.pathname === '/');
+const Home = ( {children} ) => {
+    const categories = useLoaderData();
 
     return (
-        <div className="text-black_color font_sora">
-            {/* header section */}
-            {
-                isHomePage ?
-                (<Header>
-                    <Navbar></Navbar>
-                </Header>) :
-                (<Navbar></Navbar>)
-            }
+        <div>
+            <div className="pt-4 ">
+                {/* banner or header section */}
+                <Banner children={children}></Banner>
 
+                {/* gadgets section */}
+                <Gadgets categories={categories}></Gadgets>
+            </div>
             {/* content section */}
             <Outlet></Outlet>
-
-            {/* footer section */}
-            <Footer></Footer>
         </div>
     );
 };

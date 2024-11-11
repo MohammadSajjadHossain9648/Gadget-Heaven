@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div className="text-shade_dark_blue_color_2 text-center py-20">
+        <div className="text-shade_dark_blue_color_2 text-center py-20 bg-white_color">
             <div className="mb-12">
                 <h1 className="text-2xl font-bold text-dark_blue_color mb-2">Gadget Heaven</h1>
                 <p className="text-sm">Leading the way in cutting-edge technology and innovation.</p>
