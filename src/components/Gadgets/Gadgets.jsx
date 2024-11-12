@@ -1,23 +1,28 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 
 const Gadgets = ( {categories} ) => {
     return (
-        <div className="mt-80 mb-20 sm:w-11/12 md:w-4/5 mx-auto">
+        <div className="mt-80 mb-20 w-11/12 mx-auto">
+            {/* header section */}
             <h1 className="text-3xl font-bold text-center">Explore Cutting-Edge Gadgets</h1>
 
-            <div className="mt-10">
-                <div className="w-1/4 p-5 bg-white_color grid grid-cols-1 gap-5">
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">All Product</NavLink>
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">computers</NavLink>
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">phones</NavLink>
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">smart watches</NavLink>
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">chargers</NavLink>
-                    <NavLink to="#a" className="px-8 py-4 font-medium bg-dark_blue_bg_color rounded-full active:text-white_color active:font-extrabold active:bg-purple_color">power
-                    banks</NavLink>
+            {/* container section */}
+            <div className="mt-10 flex sm:flex-col md:flex-row gap-5">
+                {/* category button section */}
+                <div className="sm:w-full md:w-1/3 lg:w-1/4 h-full p-5 bg-white_color flex sm:flex-row sm:flex-wrap md:flex-col justify-center gap-5 rounded-xl">
+                    {
+                        categories.map((category, index) => (
+                            <NavLink to="#"
+                            key={index}
+                            className={({ isActive }) =>
+                              `px-8 py-4 rounded-full ${isActive ? "text-white_color font-extrabold bg-purple_color" : "font-medium bg-dark_blue_bg_color"}`
+                            }>{category.category}</NavLink>
+                        ))
+                    }
                 </div>
-                <div className="">
 
-                </div>
+                {/* gadget's product grid section */}
+                <Outlet></Outlet>
             </div>
         </div>
     );

@@ -1,5 +1,4 @@
-import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
-import Banner from '../Banner/Banner';
+import { useLoaderData } from 'react-router-dom';
 import Gadgets from '../Gadgets/Gadgets';
 
 const Home = ( {children} ) => {
@@ -9,9 +8,6 @@ const Home = ( {children} ) => {
         <div>
             {/* gadgets section */}
             <Gadgets categories={categories}></Gadgets>
-
-            {/* content section */}
-            <Outlet></Outlet>
         </div>
     );
 };
