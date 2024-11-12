@@ -8,6 +8,8 @@ import { useLocation } from 'react-router-dom';
 const Navbar = () => {
     const location = useLocation();
     const isHomePage = (location.pathname === '/');
+    const isStatisticsPage = (location.pathname === '/Statistics');
+    const isDashboardPage = (location.pathname === '/Dashboard');
 
     return (
         <div className={`navbar mx-auto ${isHomePage ? "w-11/12" : "sm:w-11/12 md:w-4/5"}`}>
@@ -27,9 +29,9 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal space-x-8">
-                    <NavLink to={'/'} className={`text-xs ${isHomePage ? "text-white_color" : "text-Shade_black_color_1"}`}>Home</NavLink>
-                    <NavLink to={'/Statistics'} className={`text-xs ${isHomePage ? "text-white_color active:text-purple_color" : "text-Shade_black_color_1 active:text-purple_color"}`}>Statistics</NavLink>
-                    <NavLink to={'/Dashboard'} className={`text-xs ${isHomePage ? "text-white_color active:text-purple_color" : "text-Shade_black_color_1 active:text-purple_color"}`}>Dashboard</NavLink>
+                    <NavLink to={'/'} className={`text-xs ${isHomePage ? "font-bold text-white_color" : "text-Shade_black_color_1"}`}>Home</NavLink>
+                    <NavLink to={'/Statistics'} className={`text-xs ${isHomePage ? "text-white_color" : "text-Shade_black_color_1"} ${isStatisticsPage ? "font-bold text-purple_color" : ""}`}>Statistics</NavLink>
+                    <NavLink to={'/Dashboard'} className={`text-xs ${isHomePage ? "text-white_color" : "text-Shade_black_color_1"} ${isDashboardPage ? "font-bold text-purple_color" : ""}`}>Dashboard</NavLink>
                 </ul>
             </div>
             <div className="navbar-end">

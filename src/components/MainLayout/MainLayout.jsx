@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import Banner from "../Banner/Banner";
 
 const MainLayout = () => {
     const location = useLocation();
@@ -9,12 +9,12 @@ const MainLayout = () => {
 
     return (
         <div className="text-black_color font_sora bg-gray-100">
-            {/* navbar section */}
+            {/* navbar or home header section */}
             {
                 isHomePage ?
-                (<Header>
+                (<Banner>
                     <Navbar></Navbar>
-                </Header>) :
+                </Banner>) :
                 (<Navbar></Navbar>)
             }
 

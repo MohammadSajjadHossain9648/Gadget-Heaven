@@ -3,7 +3,7 @@ import bannerLogo from '../../assets/banner.jpg';
 
 const Banner = ({children}) => {
     return (
-        <div>
+        <div className="pt-4">
             {/* banner section */}
             <div className="relative mx-4 mb-72 pb-48 lg:pb-52 bg-purple_color outline outline-2 outline-shade_white_color2 outline-offset-4 rounded-2xl">
 

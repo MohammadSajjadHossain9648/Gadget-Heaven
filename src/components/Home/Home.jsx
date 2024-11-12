@@ -7,13 +7,9 @@ const Home = ( {children} ) => {
 
     return (
         <div>
-            <div className="pt-4 ">
-                {/* banner or header section */}
-                <Banner children={children}></Banner>
+            {/* gadgets section */}
+            <Gadgets categories={categories}></Gadgets>
 
-                {/* gadgets section */}
-                <Gadgets categories={categories}></Gadgets>
-            </div>
             {/* content section */}
             <Outlet></Outlet>
         </div>
