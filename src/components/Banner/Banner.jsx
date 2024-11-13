@@ -1,7 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import bannerLogo from '../../assets/banner.jpg';
 
 const Banner = ({children}) => {
+    const navigate = useNavigate();
+
     return (
         <div className="pt-4">
             {/* banner section */}
@@ -16,8 +18,8 @@ const Banner = ({children}) => {
                 <p className="text-sm mt-5 mb-7 sm:w-11/12 md:w-3/4 mx-auto">
                     Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!
                 </p>
-                <button className="btn font-bold text-purple_color rounded-full">
-                    <NavLink to={'/Dashboard'}>Shop Now</NavLink>
+                <button onClick={() => navigate('/Dashboard')} className="btn font-bold text-purple_color rounded-full">
+                    Shop Now
                 </button>
             </div>
             </div>

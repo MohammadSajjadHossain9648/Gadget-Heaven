@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ product }) => {
-    const{ product_id, product_title, product_image, price } = product;
+const ProductCard = ({ gadgetProduct }) => {
+    const{ product_id, product_title, product_image, price } = gadgetProduct;
 
     return (
         <div className='p-4 bg-white_color border rounded-xl'>

@@ -12,7 +12,8 @@ const Gadgets = ( {categories} ) => {
                 <div className="sm:w-full md:w-1/3 lg:w-1/4 h-full p-5 bg-white_color flex sm:flex-row sm:flex-wrap md:flex-col justify-center gap-5 rounded-xl">
                     {
                         categories.map((category, index) => (
-                            <NavLink to="#"
+                            <NavLink
+                            to={`/category/${category.category}`}
                             key={index}
                             className={({ isActive }) =>
                               `px-8 py-4 rounded-full ${isActive ? "text-white_color font-extrabold bg-purple_color" : "font-medium bg-dark_blue_bg_color"}`
