@@ -4,6 +4,7 @@ import MainLayout from "../components/MainLayout/MainLayout";
 import Statistics from "../components/Statistics/Statistics";
 import Dashboard from "../components/Dashboard/Dashboard";
 import ProductCards from "../components/ProductCards/ProductCards";
+import ProductDetail from "../components/ProductDetail/ProductDetail";
 
 const Routes = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const Routes = createBrowserRouter([
                 path: "/Dashboard",
                 element: <Dashboard></Dashboard>
             },
+            {
+                path: "/productDetail/:id",
+                element: <ProductDetail></ProductDetail>
+            }
         ],
     },
 ]);

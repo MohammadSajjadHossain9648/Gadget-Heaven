@@ -25,8 +25,8 @@ const Banner = ({children}) => {
             </div>
 
             {/* last section */}
-            <div className="absolute sm:-bottom-72 md:-bottom-72 lg:-bottom-60 sm:left-20 md:left-20 lg:left-40 h-3/4 sm:w-4/5 md:w-5/6 lg:w-3/4 outline outline-2 outline-shade_white_color1 outline-offset-8 rounded-2xl">
-                <img className="h-full w-full rounded-2xl" src={bannerLogo} alt="banner logo image" />
+            <div className="absolute sm:-bottom-72 md:-bottom-72 lg:-bottom-60 sm:left-20 md:left-20 lg:left-40 h-3/4 sm:w-4/5 md:w-5/6 lg:w-3/4 p-4 bg-shade_white_color1 outline outline-2 outline-white_color rounded-3xl">
+                <img className="h-full w-full rounded-3xl" src={bannerLogo} alt="banner logo image" />
             </div>
         </div>
     );

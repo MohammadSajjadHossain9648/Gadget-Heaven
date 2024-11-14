@@ -1,7 +1,7 @@
+import { FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
-import cart from '../../assets/cart.svg';
-import wishlist from '../../assets/wishlist.svg';
 import { useLocation } from 'react-router-dom';
 
 
@@ -34,11 +34,11 @@ const Navbar = ({ homePageStatus }) => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'#'} className="p-2 border border-Shade_black_color_2 rounded-full bg-white_color mr-3">
-                    <img src={cart} alt="cart icon image" />
-                </Link>
                 <Link to={'#'} className="p-2 border border-Shade_black_color_2 rounded-full bg-white_color ">
-                    <img src={wishlist} alt="wishlist icon image" />
+                    <HiOutlineShoppingCart />
+                </Link>
+                <Link to={'#'} className="ml-2 p-2 border border-Shade_black_color_2 rounded-full bg-white_color text-favicon_color mr-3">
+                    <FiHeart />
                 </Link>
             </div>
         </div>

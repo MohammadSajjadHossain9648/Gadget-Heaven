@@ -16,6 +16,8 @@ export default {
         Shade_black_color_2: 'rgba(11, 11, 11, 0.1)',
         black_bg_color: 'rgba(11, 11, 11, 0.15)',
 
+        favicon_color: 'rgb(58, 58, 58)',
+
         dark_blue_color: 'rgb(9, 8, 15)',
         shade_dark_blue_color_1: 'rgba(9, 8, 15, 0.8)',
         shade_dark_blue_color_2: 'rgba(9, 8, 15, 0.6)',
@@ -24,9 +26,15 @@ export default {
         green_color: 'rgb(48, 156, 8)',
         green_bg_color: 'rgba(48, 156, 8, 0.1)',
 
+        red_color: 'rgb(156, 8, 8)',
+        red_bg_color: 'rgba(156, 8, 8, 0.1)',
+
         purple_color: 'rgb(149, 56, 226)',
 
         yellow_color: 'rgb(249, 192, 4)',
+      },
+      gridTemplateColumns: {
+        custom: '.7fr 1.3fr'
       }
     },
   },

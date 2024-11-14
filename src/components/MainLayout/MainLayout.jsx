@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Banner from '../Banner/Banner';
+
 
 const MainLayout = () => {
     const location = useLocation();
@@ -16,7 +18,10 @@ const MainLayout = () => {
             {/* navbar section */}
             {
                 homePageStatus ?
-                ("") : (<Navbar homePageStatus={homePageStatus}></Navbar>)
+                (<Banner>
+                    <Navbar homePageStatus={homePageStatus}></Navbar>
+                </Banner>) :
+                (<Navbar homePageStatus={homePageStatus}></Navbar>)
             }
 
             {/* content section */}
