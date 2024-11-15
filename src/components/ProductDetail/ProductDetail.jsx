@@ -14,15 +14,18 @@ const ProductDetail = () => {
 
     return (
         <div className="relative">
+            {/* header section */}
             <div className="bg-purple_color pt-6 sm:pb-80 md:pb-48 mb-96">
-                <Heading title={"Product Details"} subtitle={"Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!"} ></Heading>
+                <Heading title={"Product Details"} subtitle={"Get all the essential info on each gadget, including specifications, rating, price etc, for easy and informed shopping."} ></Heading>
             </div>
-            <div className="absolute sm:left-20 top-32 md:left-32 w-4/5 p-6 bg-white_color border border-2xl rounded-3xl grid sm:grid-cols-1 md:grid-cols-custom sm:gap-3 md:gap-7">
+
+            {/* product details section */}
+            <div className="absolute top-32 sm:left-24 md:left-32 sm:w-3/4 md:w-4/5 p-6 bg-white_color border border-2xl rounded-3xl grid sm:grid-cols-1 md:grid-cols-custom sm:gap-3 md:gap-7">
                 <figure className="flex items-center justify-center">
                     <img className="sm:h-40 md:h-60" src={product_image} alt="product image" />
                 </figure>
                 <div className="space-y-3">
-                    <h1 className="text-xl font-semibold text-dark_blue_color">{product_title}</h1>
+                    <h1 className="text-2xl font-semibold text-dark_blue_color">{product_title}</h1>
                     <p className="font-semibold text-shade_dark_blue_color_1">Price: $ {price}</p>
                     {
                         availability ?

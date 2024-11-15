@@ -27,6 +27,7 @@ export default {
         green_bg_color: 'rgba(48, 156, 8, 0.1)',
 
         red_color: 'rgb(156, 8, 8)',
+        red_color_2: 'rgb(255, 0, 0)',
         red_bg_color: 'rgba(156, 8, 8, 0.1)',
 
         purple_color: 'rgb(149, 56, 226)',
@@ -34,7 +35,11 @@ export default {
         yellow_color: 'rgb(249, 192, 4)',
       },
       gridTemplateColumns: {
-        custom: '.7fr 1.3fr'
+        custom: '.7fr 1.3fr',
+        customCart1: '.3fr 1.7fr',
+        customCart2: '.5fr 1.5fr',
+        customWishlist1: '.5fr 1.5fr',
+        customWishlist2: '.6fr 1.4fr',
       }
     },
   },

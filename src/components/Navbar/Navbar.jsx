@@ -8,10 +8,10 @@ import { useLocation } from 'react-router-dom';
 const Navbar = ({ homePageStatus }) => {
     const location = useLocation();
     const isStatisticsPage = (location.pathname === '/Statistics');
-    const isDashboardPage = (location.pathname === '/Dashboard');
+    const isDashboardPage = (location.pathname === '/Dashboard' || location.pathname === '/Dashboard/Cart' || location.pathname === '/Dashboard/Wishlist');
 
     return (
-        <div className={`navbar mx-auto ${homePageStatus ? "w-11/12" : "sm:w-11/12 md:w-4/5"}`}>
+        <div className={`navbar mx-auto px-0 ${homePageStatus ? "w-11/12" : "sm:w-11/12 md:w-4/5"}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className={`btn btn-ghost md:hidden ${homePageStatus ? "text-white" : ""}`}>
@@ -19,9 +19,9 @@ const Navbar = ({ homePageStatus }) => {
                     </div>
                     <ul tabIndex={0} className={`menu menu-sm dropdown-content rounded-box z-[1] backdrop-blur-md mt-3 w-40 px-4 space-y-4 ${homePageStatus ? "bg-purple_color border border-white" : "bg-dark_blue_bg_color"}`}
                     >
-                        <NavLink to={'/'} className={`text-lg ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"}`}>Home</NavLink>
-                        <NavLink to={'/Statistics'} className={`text-lg ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"}`}>Statistics</NavLink>
-                        <NavLink to={'/Dashboard'} className={`text-lg ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"}`}>Dashboard</NavLink>
+                        <NavLink to={'/'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Home</NavLink>
+                        <NavLink to={'/Statistics'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Statistics</NavLink>
+                        <NavLink to={'/Dashboard'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Dashboard</NavLink>
                     </ul>
                 </div>
                 <h1 className={`${homePageStatus ? "text-white_color font-bold" : "font-bold"}`}>Gadget Heaven</h1>
@@ -34,10 +34,10 @@ const Navbar = ({ homePageStatus }) => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'#'} className="p-2 border border-Shade_black_color_2 rounded-full bg-white_color ">
+                <Link to={'/Dashboard/Cart'} className="p-2 border border-Shade_black_color_2 rounded-full bg-white_color ">
                     <HiOutlineShoppingCart />
                 </Link>
-                <Link to={'#'} className="ml-2 p-2 border border-Shade_black_color_2 rounded-full bg-white_color text-favicon_color mr-3">
+                <Link to={'/Dashboard/Wishlist'} className="ml-2 p-2 border border-Shade_black_color_2 rounded-full bg-white_color text-favicon_color">
                     <FiHeart />
                 </Link>
             </div>
