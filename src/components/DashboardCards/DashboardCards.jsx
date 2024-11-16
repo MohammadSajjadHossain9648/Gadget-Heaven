@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import { addCartToLS, addPriceToLS, checkCartStorage, checkTotalPrice, checkWishlistStorage, removeCartFromLS, removePriceFromLS, removeWishlistFromLS } from '../Utils/localStorage';
 import { toast } from 'react-toastify';
+import ModalComponent from '../ModalComponent/ModalComponent';
 
 const DashboardCards = () => {
     const location = useLocation();
@@ -12,13 +13,13 @@ const DashboardCards = () => {
 
     const [cartProducts, setCartProducts] = useState([]);
     useEffect(() => {
-        const products = checkCartStorage();
+        const products = checkCartStorage() || [];
         setCartProducts(products);
     }, [])
 
     const [wishlistProducts, setWishlistProducts] = useState([]);
     useEffect(() => {
-        const products = checkWishlistStorage();
+        const products = checkWishlistStorage() || [];
         setWishlistProducts(products);
     }, [])
 
@@ -77,14 +78,25 @@ const DashboardCards = () => {
 
 
     // price functionality
-    const totalPrice = checkTotalPrice();
-
+    const [totalPrice, setTotalPrice] = useState(0);
+    useEffect(() => {
+        const price = checkTotalPrice();
+        setTotalPrice(price);
+    }, [])
 
     // purchase functionality
     const [purchaseBtnActive, setPurchaseBtnActive] = useState(false);
-    useEffect(() => {
-        (totalPrice === 0) ? (setPurchaseBtnActive(true)) : (console.log("purchase ready"));
-    }, [totalPrice])
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const handleToPurchase = () => {
+        setPurchaseBtnActive(true);
+
+        if(totalPrice !== 0){
+            localStorage.removeItem("cart");
+            setCartProducts([]);
+            setModalIsOpen(true);
+        }
+    }
 
 
     return (
@@ -101,7 +113,7 @@ const DashboardCards = () => {
                                 Sort by Price
                                 <PiSlidersBold className='ml-2'/>
                             </button>
-                            <button disabled={purchaseBtnActive} className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
+                            <button disabled={purchaseBtnActive} onClick={handleToPurchase} className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
                                 Purchase
                             </button>
                         </div>
@@ -110,7 +122,7 @@ const DashboardCards = () => {
                 }
             </div>
 
-            {/* cart section */}
+            {/* body cards section */}
             <div className="space-y-5">
                 {
                     (isCartPage) ?
@@ -122,6 +134,20 @@ const DashboardCards = () => {
                     )
                 }
             </div>
+
+            {/* modal */}
+            {
+                modalIsOpen && (
+                    <ModalComponent isOpen={modalIsOpen}
+                    onClose={() => {
+                        setModalIsOpen(false);
+                        localStorage.removeItem("total_price");
+                        setTotalPrice(0);
+                    }}
+                    totalPrice={totalPrice}
+                    ></ModalComponent>
+                )
+            }
         </div>
     );
 };
