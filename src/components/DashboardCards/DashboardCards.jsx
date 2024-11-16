@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PiSlidersBold } from 'react-icons/pi';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import { addCartToLS, addPriceToLS, checkCartStorage, checkTotalPrice, checkWishlistStorage, removeCartFromLS, removePriceFromLS, removeWishlistFromLS } from '../Utils/localStorage';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ const DashboardCards = () => {
     const location = useLocation();
     const isCartPage = (location.pathname === '/Dashboard/Cart');
 
+    const navigate = useNavigate();
 
     const [cartProducts, setCartProducts] = useState([]);
     useEffect(() => {
@@ -143,6 +144,7 @@ const DashboardCards = () => {
                         setModalIsOpen(false);
                         localStorage.removeItem("total_price");
                         setTotalPrice(0);
+                        navigate("/");
                     }}
                     totalPrice={totalPrice}
                     ></ModalComponent>
