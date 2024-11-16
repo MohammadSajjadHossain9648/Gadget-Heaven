@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Heading from '../Heading/Heading';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const Dashboard = () => {
+    // dynamic title for each page
+    useEffect(() => {
+        document.title = "Dashboard | Gadget Heaven";
+    }, []);
+
     const location = useLocation();
     const isCartPage = (location.pathname === '/Dashboard/Cart');
     const isWishlistPage = (location.pathname === '/Dashboard/Wishlist');

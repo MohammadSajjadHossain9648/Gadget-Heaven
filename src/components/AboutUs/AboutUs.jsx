@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const AboutUs = () => {
+  // dynamic title for each page
+  useEffect(() => {
+    document.title = "AboutUs | Gadget Heaven";
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-400 to-blue-500 text-white p-8">
       <div className="container mx-auto">
