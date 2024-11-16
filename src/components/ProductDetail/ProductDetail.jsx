@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Heading from '../Heading/Heading';
 import StarRatings from 'react-star-ratings';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { FiHeart } from 'react-icons/fi';
+import { addCartToLS, addWishlistToLS, checkCartStorage, checkWishlistStorage } from '../Utils/localStorage';
 
 
 const ProductDetail = () => {
@@ -11,6 +12,42 @@ const ProductDetail = () => {
     const {gadgetProduct} = location.state;
 
     const{ product_id, product_title, product_image, price, description, Specification, availability, rating } = gadgetProduct;
+
+
+    // "add to card" button disable functionality
+    const [cardBtnActive, setCardBtnActive] = useState(false);
+    useEffect(() => {
+        // Check if the product is already in the cart when we open the product detail page each time.
+        const cartData = checkCartStorage();
+        const isExist = cartData.find(cart => cart.product_id === parseInt(gadgetProduct.product_id));
+        if(isExist){
+            setCardBtnActive(true);
+        }
+    }, [gadgetProduct])
+
+    // Add the product in the local storage
+    const handleToAddCart = (gadgetProduct) => {
+        addCartToLS(gadgetProduct);
+        setCardBtnActive(true);
+    }
+
+
+    // "wishlist" button disable functionality
+    const [wishlistBtnActive, setWishlistBtnActive] = useState(false);
+
+    useEffect(() => {
+        // Check if the product is already in the wishlist when we open the product detail page each time.
+        const wishlistData = checkWishlistStorage();
+        const isExist = wishlistData.find(wishlist => wishlist.product_id === parseInt(gadgetProduct.product_id));
+        if(isExist){
+            setWishlistBtnActive(true);
+        }
+    }, [gadgetProduct])
+
+    const handleToAddWishlist = (product) => {
+        addWishlistToLS(product);
+        setWishlistBtnActive(true);
+    }
 
     return (
         <div className="relative">
@@ -54,11 +91,11 @@ const ProductDetail = () => {
                     </div>
 
                     <div className="flex">
-                        <button className={`px-4 py-2 text-sm font-bold text-white_color border rounded-full bg-purple_color flex justify-between items-center ${availability ? "" : "cursor-not-allowed"}`}>
-                            <span className='mr-2'>Add To Card</span>
-                            <HiOutlineShoppingCart />
+                        <button disabled={cardBtnActive} onClick={() => handleToAddCart(gadgetProduct)} className={`px-4 py-2 text-sm font-bold text-white_color border rounded-full bg-purple_color flex justify-between items-center ${(availability) ? "" : "cursor-not-allowed"}`}>
+                            Add To Card
+                            <HiOutlineShoppingCart className="ml-2" />
                         </button>
-                        <button className="ml-2 p-3 border border-black_bg_color rounded-full bg-white_color text-favicon_color">
+                        <button disabled={wishlistBtnActive} onClick={() => handleToAddWishlist(gadgetProduct)} className="ml-2 p-3 border border-black_bg_color rounded-full bg-white_color text-favicon_color">
                             <FiHeart />
                         </button>
                     </div>

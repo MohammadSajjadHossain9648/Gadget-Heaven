@@ -2,6 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Banner from '../Banner/Banner';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const MainLayout = () => {
@@ -29,6 +31,9 @@ const MainLayout = () => {
 
             {/* footer section */}
             <Footer></Footer>
+
+            {/* toast notifications section */}
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

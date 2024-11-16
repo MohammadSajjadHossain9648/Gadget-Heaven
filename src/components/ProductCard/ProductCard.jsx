@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import ProductDetail from '../ProductDetail/ProductDetail';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ gadgetProduct }) => {
     const{ product_id, product_title, product_image, price } = gadgetProduct;

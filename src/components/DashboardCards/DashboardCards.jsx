@@ -1,13 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PiSlidersBold } from 'react-icons/pi';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
+import { addCartToLS, checkCartStorage, checkWishlistStorage, removeCartFromLS, removeWishlistFromLS } from '../Utils/localStorage';
 
 const DashboardCards = () => {
-    const listProducts = useLoaderData();
-
     const location = useLocation();
     const isCartPage = (location.pathname === '/Dashboard/Cart');
+
+
+    const [cartProducts, setCartProducts] = useState([]);
+    useEffect(() => {
+        const products = checkCartStorage();
+        setCartProducts(products);
+    }, [])
+
+    const [wishlistProducts, setWishlistProducts] = useState([]);
+    useEffect(() => {
+        const products = checkWishlistStorage();
+        setWishlistProducts(products);
+    }, [])
+
+
+    // sort functionality
+    const handleToSortButton = () => {
+       const sortedProducts = [...cartProducts].sort((a, b) => b.price - a.price);
+       setCartProducts(sortedProducts);
+    }
+
+
+    // remove functionality
+    const handleToRemoveProduct = (listProduct, pathName) => {
+        if(pathName === '/Dashboard/Cart'){
+            removeCartFromLS(listProduct);
+            const products = checkCartStorage();
+            setCartProducts(products);
+        }
+        else{
+            removeWishlistFromLS(listProduct);
+            const products = checkWishlistStorage();
+            setWishlistProducts(products);
+        }
+    }
+
+
+    // Add the product in the local storage
+    const handleToAddCart = (listProduct) => {
+        addCartToLS(listProduct);
+        setCartProducts(listProduct);
+    }
+
+
 
     return (
         <div className="sm:w-11/12 md:w-4/5 mx-auto mt-10 mb-40">
@@ -19,7 +62,7 @@ const DashboardCards = () => {
                     (
                         <div className={`space-x-3 ${isCartPage ? "flex items-center justify-between" : ""}`}>
                             <h1 className="text-xl font-bold mr-2">Total cost: 999.99</h1>
-                            <button className="text-purple_color font-semibold px-4 py-2 border border-purple_color rounded-3xl flex items-center">
+                            <button onClick={handleToSortButton} className="text-purple_color font-semibold px-4 py-2 border border-purple_color rounded-3xl flex items-center">
                                 Sort by Price
                                 <PiSlidersBold className='ml-2'/>
                             </button>
@@ -35,7 +78,13 @@ const DashboardCards = () => {
             {/* cart section */}
             <div className="space-y-5">
                 {
-                    listProducts.map((listProduct, index) => <ProductList key={index} listProduct={listProduct}></ProductList>)
+                    (isCartPage) ?
+                    (
+                        cartProducts.map((listProduct, index) => <ProductList key={index} listProduct={listProduct} handleToAddCart={handleToAddCart} handleToRemoveProduct={handleToRemoveProduct}></ProductList>)
+                    ) :
+                    (
+                        wishlistProducts.map((listProduct, index) => <ProductList key={index} listProduct={listProduct} handleToAddCart={handleToAddCart} handleToRemoveProduct={handleToRemoveProduct}></ProductList>)
+                    )
                 }
             </div>
         </div>

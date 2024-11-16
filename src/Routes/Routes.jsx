@@ -32,6 +32,7 @@ const Routes = createBrowserRouter([
             {
                 path: "/Statistics",
                 element: <Statistics></Statistics>,
+                loader: () => fetch('../../public/products.json')
             },
             {
                 path: "/Dashboard",
@@ -39,13 +40,11 @@ const Routes = createBrowserRouter([
                 children: [
                     {
                         path: "/Dashboard/Cart",
-                        element: <DashboardCards></DashboardCards>,
-                        loader: () => fetch('../../public/products.json')
+                        element: <DashboardCards></DashboardCards>
                     },
                     {
                         path: "/Dashboard/Wishlist",
-                        element: <DashboardCards></DashboardCards>,
-                        loader: () => fetch('../../public/products.json')
+                        element: <DashboardCards></DashboardCards>
                     },
                 ]
             },

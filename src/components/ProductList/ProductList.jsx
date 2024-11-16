@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RxCrossCircled } from 'react-icons/rx';
 import { useLocation } from 'react-router-dom';
+import { checkCartStorage } from '../Utils/localStorage';
 
 
-const ProductList = ({ listProduct }) => {
+const ProductList = ({ listProduct, handleToAddCart, handleToRemoveProduct }) => {
     const{ product_id, product_title, product_image, price, description } = listProduct;
 
     const location = useLocation();
     const isCartPage = (location.pathname === '/Dashboard/Cart');
+
+    // "add to card" button disable functionality
+    const [cardBtnActive, setCardBtnActive] = useState(false);
+    useEffect(() => {
+        // Check if the product is already in the cart when we open the product detail page each time.
+        const cartData = checkCartStorage();
+        const isExist = cartData.find(cart => cart.product_id === parseInt(listProduct.product_id));
+        if(isExist){
+            setCardBtnActive(true);
+        }
+    }, [listProduct])
+
 
     return (
         <div className={`grid ${isCartPage ? "sm:grid-cols-customCart2 md:grid-cols-customCart1" : "sm:grid-cols-customWishlist2 md:grid-cols-customWishlist1"} gap-7 p-7 items-center bg-white_color rounded-xl`}>
@@ -23,13 +36,13 @@ const ProductList = ({ listProduct }) => {
                         isCartPage ?
                         (" ") :
                         (
-                            <button className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
+                            <button disabled={cardBtnActive} onClick={() => handleToAddCart(listProduct)} className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
                                 Add to Card
                             </button>
                         )
                     }
                 </div>
-                <button className="h-6 flex">
+                <button onClick={() => handleToRemoveProduct(listProduct, location.pathname)} className="h-6 flex">
                     <RxCrossCircled className="text-red_color_2 h-6 w-6" />
                 </button>
             </div>
