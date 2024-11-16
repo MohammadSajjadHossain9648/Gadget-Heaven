@@ -11,7 +11,7 @@ const ProductDetail = () => {
     const location = useLocation();
     const {gadgetProduct} = location.state;
 
-    const{ product_id, product_title, product_image, price, description, specifications, availability, rating } = gadgetProduct;
+    const{ product_id, product_title, product_image, price, description, Specification, availability, rating } = gadgetProduct;
 
 
     // "add to card" button disable functionality
@@ -74,7 +74,7 @@ const ProductDetail = () => {
                     <h3 className="text-sm font-bold text-dark_blue_color">Specification:</h3>
                     <ol>
                         {
-                            specifications.map((specification, index)=> <li key={index} className="ml-4 list-decimal text-sm text-shade_dark_blue_color_2">{specification}</li>)
+                            Specification.map((specify, index)=> <li key={index} className="ml-4 list-decimal text-sm text-shade_dark_blue_color_2">{specify}</li>)
                         }
                     </ol>
                     <h3 className="text-sm font-bold text-dark_blue_color">Rating ⭐</h3>
