@@ -9,6 +9,7 @@ const Navbar = ({ homePageStatus }) => {
     const location = useLocation();
     const isStatisticsPage = (location.pathname === '/Statistics');
     const isDashboardPage = (location.pathname === '/Dashboard' || location.pathname === '/Dashboard/Cart' || location.pathname === '/Dashboard/Wishlist');
+    const isAboutUsPage = (location.pathname === '/AboutUs');
 
     return (
         <div className={`navbar mx-auto px-0 ${homePageStatus ? "w-11/12" : "sm:w-11/12 md:w-4/5"}`}>
@@ -22,6 +23,7 @@ const Navbar = ({ homePageStatus }) => {
                         <NavLink to={'/'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Home</NavLink>
                         <NavLink to={'/Statistics'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Statistics</NavLink>
                         <NavLink to={'/Dashboard'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>Dashboard</NavLink>
+                        <NavLink to={'/AboutUs'} className={`text-lg ${homePageStatus ? "text-white_color" : ""}`}>AboutUs</NavLink>
                     </ul>
                 </div>
                 <h1 className={`${homePageStatus ? "text-white_color font-bold" : "font-bold"}`}>Gadget Heaven</h1>
@@ -31,6 +33,7 @@ const Navbar = ({ homePageStatus }) => {
                     <NavLink to={'/'} className={`text-xs ${homePageStatus ? "font-bold text-white_color" : "text-Shade_black_color_1"}`}>Home</NavLink>
                     <NavLink to={'/Statistics'} className={`text-xs ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"} ${isStatisticsPage ? "font-bold text-purple_color" : ""}`}>Statistics</NavLink>
                     <NavLink to={'/Dashboard'} className={`text-xs ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"} ${isDashboardPage ? "font-bold text-purple_color" : ""}`}>Dashboard</NavLink>
+                    <NavLink to={'/AboutUs'} className={`text-xs ${homePageStatus ? "text-white_color" : "text-Shade_black_color_1"} ${isAboutUsPage ? "font-bold text-purple_color" : ""}`}>AboutUs</NavLink>
                 </ul>
             </div>
             <div className="navbar-end">

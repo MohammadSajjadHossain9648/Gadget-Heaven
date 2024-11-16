@@ -6,7 +6,7 @@
         "category": "Computers",
         "price": 2500,
         "description": "High-performance laptop designed for gaming and multimedia tasks.",
-        "Specification": [
+        "specifications": [
             "16GB RAM",
             "1TB SSD",
             "RTX 3060 GPU",
@@ -22,7 +22,7 @@
         "category": "Phones",
         "price": 999,
         "description": "Latest flagship smartphone with advanced AI features and 5G.",
-        "Specification": [
+        "specifications": [
             "6.7-inch OLED Display",
             "128GB Storage",
             "48MP Triple Camera",
@@ -38,7 +38,7 @@
         "category": "Computers",
         "price": 2000,
         "description": "Professional desktop for demanding tasks and heavy software.",
-        "Specification": [
+        "specifications": [
             "32GB RAM",
             "2TB SSD",
             "NVIDIA Quadro",
@@ -54,7 +54,7 @@
         "category": "Smart Watches",
         "price": 199,
         "description": "Stylish smartwatch with health tracking and workout modes.",
-        "Specification": [
+        "specifications": [
             "Heart Rate Monitor",
             "GPS Tracking",
             "Water Resistant",
@@ -70,13 +70,13 @@
         "category": "Power Banks",
         "price": 55,
         "description": "Portable power bank with fast charging capabilities.",
-        "Specification": [
+        "specifications": [
             "10000mAh Capacity",
             "Dual USB Output",
             "Lightweight Design",
             "Fast Charging Supported"
         ],
-        "availability": true,
+        "availability": false,
         "rating": 4.7
     },
     {
@@ -86,7 +86,7 @@
         "category": "Computers",
         "price": 950,
         "description": "Convertible laptop with touch display for versatile usage.",
-        "Specification": [
+        "specifications": [
             "8GB RAM",
             "256GB SSD",
             "Intel Core i5",
@@ -102,7 +102,7 @@
         "category": "Phones",
         "price": 399,
         "description": "Sustainable smartphone made from eco-friendly materials.",
-        "Specification": [
+        "specifications": [
             "5.8-inch Display",
             "64GB Storage",
             "12MP Camera",
@@ -118,7 +118,7 @@
         "category": "Computers",
         "price": 800,
         "description": "Compact desktop computer perfect for home and office use.",
-        "Specification": [
+        "specifications": [
             "8GB RAM",
             "1TB HDD",
             "Intel Core i5",
@@ -134,7 +134,7 @@
         "category": "Phones",
         "price": 1500,
         "description": "High-end smartphone with top-tier features and luxurious design.",
-        "Specification": [
+        "specifications": [
             "7-inch AMOLED Display",
             "256GB Storage",
             "108MP Camera",
@@ -150,7 +150,7 @@
         "category": "Power Banks",
         "price": 90,
         "description": "High-capacity power bank ideal for long trips and heavy usage.",
-        "Specification": [
+        "specifications": [
             "20000mAh Capacity",
             "Fast Charging",
             "Triple USB Output",
@@ -166,7 +166,7 @@
         "category": "Computers",
         "price": 400,
         "description": "Affordable and durable laptop designed for students.",
-        "Specification": [
+        "specifications": [
             "4GB RAM",
             "128GB SSD",
             "Intel Celeron",
@@ -182,13 +182,13 @@
         "category": "Computers",
         "price": 1200,
         "description": "Sleek and powerful laptop suitable for business and personal use.",
-        "Specification": [
+        "specifications": [
             "8GB RAM",
             "512GB SSD",
             "Intel Core i7",
             "15.6-inch Display"
         ],
-        "availability": false,
+        "availability": true,
         "rating": 4.4
     }
-  ]
+]

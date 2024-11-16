@@ -16,7 +16,7 @@ const ProductList = ({ listProduct, handleToAddCart, handleToRemoveProduct }) =>
         // Check if the product is already in the cart when we open the product detail page each time.
         const cartData = checkCartStorage();
         const isExist = cartData.find(cart => cart.product_id === parseInt(listProduct.product_id));
-        if(isExist){
+        if(isExist || !listProduct.availability){
             setCardBtnActive(true);
         }
     }, [listProduct])
@@ -42,7 +42,7 @@ const ProductList = ({ listProduct, handleToAddCart, handleToRemoveProduct }) =>
                         )
                     }
                 </div>
-                <button onClick={() => handleToRemoveProduct(listProduct, location.pathname)} className="h-6 flex">
+                <button onClick={() => handleToRemoveProduct(listProduct)} className="h-6 flex">
                     <RxCrossCircled className="text-red_color_2 h-6 w-6" />
                 </button>
             </div>

@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 
+// cart section
 // check -> local storage is empty or not
 const checkCartStorage = () => {
     const cartLocalStorage = localStorage.getItem(`cart`);
@@ -9,18 +10,6 @@ const checkCartStorage = () => {
     }
     return [];
 }
-const checkWishlistStorage = () => {
-    const wishlistLocalStorage = localStorage.getItem(`wishlist`);
-    // if local storage is not empty, convert local storage JSON string to JS object and return it. Otherwise return an empty array
-    if(wishlistLocalStorage){
-        const wishlistObject = JSON.parse(wishlistLocalStorage);
-        return wishlistObject;
-    }
-    return [];
-}
-
-
-
 
 // add cart product in local storage
 const addCartToLS = (product) => {
@@ -39,6 +28,33 @@ const addCartToLS = (product) => {
         position: "top-center",
         autoClose: 3000,
     });
+}
+
+// remove cart product in local storage
+const removeCartFromLS = (product) => {
+    const cartData = checkCartStorage();
+    const remainingCart = cartData.filter(cart => cart.product_id !== parseInt(product.product_id));
+
+    // if product is available, add it to local storage again
+    localStorage.setItem(`cart`, JSON.stringify(remainingCart));
+    toast.error(`"${product.product_title}" has been removed successfully from the cart.`, {
+        position: "top-center",
+        autoClose: 3000,
+    });
+}
+
+
+
+
+// wishlist section
+// check -> local storage is empty or not
+const checkWishlistStorage = () => {
+    const wishlistLocalStorage = localStorage.getItem(`wishlist`);
+    // if local storage is not empty, convert local storage JSON string to JS object and return it. Otherwise return an empty array
+    if(wishlistLocalStorage){
+        return JSON.parse(wishlistLocalStorage);
+    }
+    return [];
 }
 
 // add Wishlist product in local storage
@@ -60,24 +76,6 @@ const addWishlistToLS = (product) => {
     });
 }
 
-
-
-
-
-
-// remove cart product in local storage
-const removeCartFromLS = (product) => {
-    const cartData = checkCartStorage();
-    const remainingCart = cartData.filter(cart => cart.product_id !== parseInt(product.product_id));
-
-    // if product is available, add it to local storage again
-    localStorage.setItem(`cart`, JSON.stringify(remainingCart));
-    toast.error(`"${product.product_title}" has been removed successfully from the cart.`, {
-        position: "top-center",
-        autoClose: 3000,
-    });
-}
-
 // remove Wishlist product in local storage
 const removeWishlistFromLS = (product) => {
     const wishlistData = checkWishlistStorage();
@@ -94,4 +92,35 @@ const removeWishlistFromLS = (product) => {
 
 
 
-export { checkCartStorage, checkWishlistStorage, addCartToLS, addWishlistToLS, removeCartFromLS, removeWishlistFromLS };
+
+// total price section
+// check -> local storage is empty or not
+const checkTotalPrice = () => {
+    const priceLocalStorage = localStorage.getItem(`total_price`);
+    // if local storage is not empty, convert local storage JSON string to JS object and return it. Otherwise return an empty array
+    if(priceLocalStorage){
+        return JSON.parse(priceLocalStorage);
+    }
+    return 0;
+}
+
+// add Wishlist product in local storage
+const addPriceToLS = (price) => {
+    const priceData = checkTotalPrice();
+
+    const updatedPrice = priceData + price;
+    localStorage.setItem(`total_price`, JSON.stringify(updatedPrice));
+}
+
+// remove Wishlist product in local storage
+const removePriceFromLS = (price) => {
+    const priceData = checkTotalPrice();
+
+    const updatedPrice = priceData - price;
+    localStorage.setItem(`total_price`, JSON.stringify(updatedPrice));
+}
+
+
+
+
+export { checkCartStorage, addCartToLS, removeCartFromLS, checkWishlistStorage, addWishlistToLS, removeWishlistFromLS, checkTotalPrice, addPriceToLS, removePriceFromLS };

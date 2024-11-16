@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { PiSlidersBold } from 'react-icons/pi';
 import { useLocation } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
-import { addCartToLS, checkCartStorage, checkWishlistStorage, removeCartFromLS, removeWishlistFromLS } from '../Utils/localStorage';
+import { addCartToLS, addPriceToLS, checkCartStorage, checkTotalPrice, checkWishlistStorage, removeCartFromLS, removePriceFromLS, removeWishlistFromLS } from '../Utils/localStorage';
+import { toast } from 'react-toastify';
 
 const DashboardCards = () => {
     const location = useLocation();
@@ -23,18 +24,40 @@ const DashboardCards = () => {
 
 
     // sort functionality
+    // Simplified check for sorting
+    const isSorted = (array, key) => {
+        return array.every((prevArr, index) => {
+            if(index === 0){
+                // Skip the first item
+                return true;
+            }
+            return prevArr[key] >= array[index - 1][key]; // Compare with the previous item
+        });
+    }
+
+    const [sortBtnActive, setSortBtnActive] = useState(false);
     const handleToSortButton = () => {
-       const sortedProducts = [...cartProducts].sort((a, b) => b.price - a.price);
-       setCartProducts(sortedProducts);
+        if(cartProducts.length>1  && !isSorted(cartProducts, 'cartProducts.price')) {
+            const sortedProducts = [...cartProducts].sort((a, b) => b.price - a.price);
+            setCartProducts(sortedProducts);
+            toast.success(`Cart sorted successfully!`, {
+                position: "top-center",
+                autoClose: 3000,
+            });
+            setSortBtnActive(true);
+        }
     }
 
 
+
     // remove functionality
-    const handleToRemoveProduct = (listProduct, pathName) => {
+    const handleToRemoveProduct = (listProduct) => {
+        const pathName = location.pathname;
         if(pathName === '/Dashboard/Cart'){
             removeCartFromLS(listProduct);
             const products = checkCartStorage();
             setCartProducts(products);
+            removePriceFromLS(listProduct.price);
         }
         else{
             removeWishlistFromLS(listProduct);
@@ -48,8 +71,20 @@ const DashboardCards = () => {
     const handleToAddCart = (listProduct) => {
         addCartToLS(listProduct);
         setCartProducts(listProduct);
+        addPriceToLS(listProduct.price);
     }
 
+
+
+    // price functionality
+    const totalPrice = checkTotalPrice();
+
+
+    // purchase functionality
+    const [purchaseBtnActive, setPurchaseBtnActive] = useState(false);
+    useEffect(() => {
+        (totalPrice === 0) ? (setPurchaseBtnActive(true)) : (console.log("purchase ready"));
+    }, [totalPrice])
 
 
     return (
@@ -61,12 +96,12 @@ const DashboardCards = () => {
                     isCartPage ?
                     (
                         <div className={`space-x-3 ${isCartPage ? "flex items-center justify-between" : ""}`}>
-                            <h1 className="text-xl font-bold mr-2">Total cost: 999.99</h1>
-                            <button onClick={handleToSortButton} className="text-purple_color font-semibold px-4 py-2 border border-purple_color rounded-3xl flex items-center">
+                            <h1 className="text-xl font-bold mr-2">Total cost: {totalPrice}</h1>
+                            <button disabled={sortBtnActive} onClick={handleToSortButton} className="text-purple_color font-semibold px-4 py-2 border border-purple_color rounded-3xl flex items-center">
                                 Sort by Price
                                 <PiSlidersBold className='ml-2'/>
                             </button>
-                            <button className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
+                            <button disabled={purchaseBtnActive} className="text-white_color font-medium bg-purple_color px-5 py-2 rounded-3xl">
                                 Purchase
                             </button>
                         </div>

@@ -4,14 +4,14 @@ import Heading from '../Heading/Heading';
 import StarRatings from 'react-star-ratings';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { FiHeart } from 'react-icons/fi';
-import { addCartToLS, addWishlistToLS, checkCartStorage, checkWishlistStorage } from '../Utils/localStorage';
+import { addCartToLS, addPriceToLS, addWishlistToLS, checkCartStorage, checkWishlistStorage } from '../Utils/localStorage';
 
 
 const ProductDetail = () => {
     const location = useLocation();
     const {gadgetProduct} = location.state;
 
-    const{ product_id, product_title, product_image, price, description, Specification, availability, rating } = gadgetProduct;
+    const{ product_id, product_title, product_image, price, description, specifications, availability, rating } = gadgetProduct;
 
 
     // "add to card" button disable functionality
@@ -20,7 +20,7 @@ const ProductDetail = () => {
         // Check if the product is already in the cart when we open the product detail page each time.
         const cartData = checkCartStorage();
         const isExist = cartData.find(cart => cart.product_id === parseInt(gadgetProduct.product_id));
-        if(isExist){
+        if(isExist || !gadgetProduct.availability){
             setCardBtnActive(true);
         }
     }, [gadgetProduct])
@@ -29,6 +29,7 @@ const ProductDetail = () => {
     const handleToAddCart = (gadgetProduct) => {
         addCartToLS(gadgetProduct);
         setCardBtnActive(true);
+        addPriceToLS(gadgetProduct.price);
     }
 
 
@@ -73,7 +74,7 @@ const ProductDetail = () => {
                     <h3 className="text-sm font-bold text-dark_blue_color">Specification:</h3>
                     <ol>
                         {
-                            Specification.map(specify => <li className="text-sm text-shade_dark_blue_color_2">{specify}</li>)
+                            specifications.map((specification, index)=> <li key={index} className="ml-4 list-decimal text-sm text-shade_dark_blue_color_2">{specification}</li>)
                         }
                     </ol>
                     <h3 className="text-sm font-bold text-dark_blue_color">Rating ⭐</h3>

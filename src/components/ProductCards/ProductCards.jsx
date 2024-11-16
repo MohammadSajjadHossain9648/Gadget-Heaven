@@ -47,8 +47,6 @@ const ProductCards = () => {
                     </div>
                     )
             }
-
-
       </>
     );
 };

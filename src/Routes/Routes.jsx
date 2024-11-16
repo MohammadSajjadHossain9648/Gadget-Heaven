@@ -6,6 +6,8 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import ProductCards from "../components/ProductCards/ProductCards";
 import ProductDetail from "../components/ProductDetail/ProductDetail";
 import DashboardCards from "../components/DashboardCards/DashboardCards";
+import AboutUs from "../components/AboutUs/AboutUs";
+
 
 const Routes = createBrowserRouter([
     {
@@ -49,9 +51,14 @@ const Routes = createBrowserRouter([
                 ]
             },
             {
+                path: "/AboutUs",
+                element: <AboutUs></AboutUs>
+            },
+            {
                 path: "/productDetail/:id",
                 element: <ProductDetail></ProductDetail>
-            }
+            },
+
         ],
     },
 ]);
