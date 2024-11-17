@@ -17,24 +17,24 @@ const Routes = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('../../public/categories.json'),
+                loader: () => fetch('/categories.json'),
                 children: [
                     {
                         path: "/",
                         element: <ProductCards></ProductCards>,
-                        loader: () => fetch('../../public/products.json')
+                        loader: () => fetch('/products.json')
                     },
                     {
                         path: "/category/:category",
                         element: <ProductCards></ProductCards>,
-                        loader: () => fetch('../../public/products.json')
+                        loader: () => fetch('/products.json')
                     }
                 ]
             },
             {
                 path: "/Statistics",
                 element: <Statistics></Statistics>,
-                loader: () => fetch('../../public/products.json')
+                loader: () => fetch('/products.json')
             },
             {
                 path: "/Dashboard",
